@@ -1857,7 +1857,11 @@ void retro_get_system_info(struct retro_system_info* info)
 	std::memset(info, 0, sizeof(*info));
 	info->library_name = "PCEE2";
 	info->library_version = GIT_REV;
+#ifdef HAVE_ORE
+	info->valid_extensions = "iso|chd|ore|cue|m3u|cso|zso|gz|bin|mdf|nrg|elf|irx|gs|acgame";
+#else
 	info->valid_extensions = "iso|chd|cue|m3u|cso|zso|gz|bin|mdf|nrg|elf|irx|gs|acgame";
+#endif
 	info->need_fullpath = true;
 	info->block_extract = true;
 }

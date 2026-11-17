@@ -4,6 +4,7 @@ What changed in the libretro core of this fork, newest first. Changes that come 
 
 ## November 2026
 
+- ORE disc images, oxyromon's format, load as content in a core built with `-DORE=ON -DSMELT_DIR=<oxyromon>/crates/smelt-rs` (libsmelt built there first with `cargo build --release`): PlayStation 2 DVDs and CDs, read as the ISO or BIN they were made from. An ORE of anything else is refused.
 - Namco System 246/256 light gun games: the I/O board's Push 1, which the service menu takes as Enter to open Coin Options, Game Options and the other submenus, is A on a pad or Aux B on the light gun (gig71, #69).
 - Time Crisis 4 and Cobra The Arcade: the gun's trigger works again. Those games read it as the I/O board's Left and the gun sensor as Right, and the D-pad for the service menu (above) overwrote both every frame; the D-pad now leaves alone the bits a game's gun uses (gig71, #69).
 - Namco System 246/256 light gun games: the Lightgun Crosshair option draws a crosshair where each gun aims, as for the GunCon 2 (the games have none, and with a mouse the gun could not be calibrated without one); the D-pad, a pad's or the light gun's, is the I/O board's Up/Down/Left/Right, which the service menu is moved through (gig71, #69).

@@ -8,6 +8,7 @@ include(GNUInstallDirs)
 #-------------------------------------------------------------------------------
 option(ENABLE_LIBRETRO "Enables building the libretro core." OFF)
 option(SHADERC_STATIC "Link shaderc statically (SHADERC_LIBRARY must point at shaderc_combined) instead of loading it at runtime." OFF)
+option(ORE "Read ORE images through libsmelt; set SMELT_DIR to oxyromon's crates/smelt-rs, built with cargo build --release" OFF)
 option(LTO_PCSX2_CORE "Enable LTO/IPO/LTCG on the subset of pcsx2 that benefits most from it but not anything else")
 option(USE_VTUNE "Plug VTUNE to profile GS JIT.")
 option(PACKAGE_MODE "Use this option to ease packaging of PCSX2 (developer/distribution option)")

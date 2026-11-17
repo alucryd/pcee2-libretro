@@ -7,6 +7,9 @@
 #include "CDVD/FlatFileReader.h"
 #include "CDVD/GzippedFileReader.h"
 #include "CDVD/IsoFileFormats.h"
+#ifdef HAVE_ORE
+#include "CDVD/OreFileReader.h"
+#endif
 #include "Config.h"
 #include "Host.h"
 
@@ -43,6 +46,11 @@ static std::unique_ptr<ThreadedFileReader> GetFileReader(const std::string& path
 
 	if (StringUtil::compareNoCase(extension, "chd"))
 		return std::make_unique<ChdFileReader>();
+
+#ifdef HAVE_ORE
+	if (StringUtil::compareNoCase(extension, "ore"))
+		return std::make_unique<OreFileReader>();
+#endif
 
 	if (StringUtil::compareNoCase(extension, "cso") || StringUtil::compareNoCase(extension, "zso"))
 		return std::make_unique<CsoFileReader>();

@@ -977,6 +977,16 @@ if(APPLE AND NOT APPLE_EMBEDDED)
 	)
 endif()
 
+if(ORE)
+	list(APPEND pcsx2CDVDSources CDVD/OreFileReader.cpp)
+	list(APPEND pcsx2CDVDHeaders CDVD/OreFileReader.h)
+	target_compile_definitions(PCSX2_FLAGS INTERFACE HAVE_ORE)
+	target_include_directories(PCSX2_FLAGS INTERFACE "${SMELT_DIR}/include")
+	# shortcut: the system libraries a Rust staticlib needs on Linux
+	# (rustc --print native-static-libs); other platforms need theirs
+	target_link_libraries(PCSX2_FLAGS INTERFACE "${SMELT_DIR}/target/release/libsmelt.a" pthread dl m rt util)
+endif()
+
 if(WIN32 AND ARCH_X86)
 	# RAIntegration is only supported on Windows.
 	target_compile_definitions(PCSX2_FLAGS INTERFACE ENABLE_RAINTEGRATION)
